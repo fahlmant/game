@@ -1,6 +1,6 @@
-#include "Bat.h"
+#include "bat.h"
 
-Bat::Bat(float startX, startY){
+Bat::Bat(float startX, float startY){
     
     position.x = startX;
     position.y = startY;
