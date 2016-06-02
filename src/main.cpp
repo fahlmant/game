@@ -20,7 +20,7 @@ int main() {
     Ball ball (windowWidth/2, 1);
     Text hud;
     Font font;
-    font.loadFromFile("txt/vcr.ttf");
+    font.loadFromFile("../txt/vcr.ttf");
     hud.setFont(font);
     hud.setCharacterSize(50);
     hud.setColor(sf::Color::White);
@@ -37,11 +37,17 @@ int main() {
         }
         if(Keyboard::isKeyPressed(Keyboard::Left))
         {
-            bat.moveLeft();
+            if(bat.getPosition().left > 0)
+            {
+                bat.moveLeft();
+            }
         }
         else if(Keyboard::isKeyPressed(Keyboard::Right))
         {
-            bat.moveRight();
+            if(bat.getPosition().left + 50 < windowWidth)
+            {
+                bat.moveRight();
+            }
         }
         else if(Keyboard::isKeyPressed(Keyboard::Escape))
         {
