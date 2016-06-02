@@ -1,24 +1,28 @@
 #include <SFML/Graphics.hpp>
+#include "bat.h"
+
+#define windowHeight 800
+#define windowWidth 1024
+
+using namespace sf;
 
 int main() {
 
-    sf::RenderWindow window(sf::VideoMode(200, 200), "Game");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    RenderWindow window(VideoMode(windowWidth, windowHeight), "Game");
 
-    while(window.isOpen()){
-        sf::Event event;
-        while(window.pollEvent(event)){
-            if(event.type == sf::Event::Closed)
+    while(window.isOpen())
+    {
+        Event e;
+        while(window.pollEvent(e))
+        {
+            if(e.type == Event::Closed)
             {
                 window.close();
             }
         }
-
-        window.clear();
-        window.draw(shape);
-        window.display();
     }
+    
+
 
     return 0;
 }
