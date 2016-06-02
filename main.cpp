@@ -3,8 +3,8 @@
 #include "ball.h"
 #include <SFML/Graphics.hpp>
 
-#define windowHeight 800
-#define windowWidth 1024
+#define windowHeight 600
+#define windowWidth 800
 
 using namespace sf;
 

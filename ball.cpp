@@ -26,13 +26,13 @@ float Ball::getXVel(){
 
 void Ball::reboundSides(){
 
-    xVel -= xVel;
+    xVel = -xVel;
 }
 
 void Ball::reboundTopAndBat(){
 
     position.y -= (yVel * 30);
-    yVel -= yVel;
+    yVel = -yVel;
 }
 
 void Ball::hitBot(){
