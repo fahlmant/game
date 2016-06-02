@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "bat.h"
 #include "ball.h"
+#include <sstream>
 #include <SFML/Graphics.hpp>
 
 #define windowHeight 600
@@ -77,6 +78,10 @@ int main() {
 
         ball.update();
         bat.update();
+
+        std::stringstream ss;
+        ss << "Score: " << score << "  Lives: " << lives;
+        hud.setString(ss.str());
 
         window.clear(Color(26, 128, 182, 255));
         window.draw(bat.getShape());
