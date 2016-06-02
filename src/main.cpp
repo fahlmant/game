@@ -20,7 +20,7 @@ int main() {
     Ball ball (windowWidth/2, 1);
     Text hud;
     Font font;
-    font.loadFromFile("txt/vcr.ttf");
+    font.loadFromFile("../txt/vcr.ttf");
     hud.setFont(font);
     hud.setCharacterSize(50);
     hud.setColor(sf::Color::White);
