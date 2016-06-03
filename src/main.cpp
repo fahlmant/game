@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "bat.h"
 #include "ball.h"
+#include "block.h"
 #include <sstream>
 #include <SFML/Graphics.hpp>
 
@@ -18,6 +19,7 @@ int main() {
 
     Bat bat (windowWidth / 2, windowHeight - 20);
     Ball ball (windowWidth/2, 1);
+    Block block (windowWidth/2 , windowHeight/2);
     Text hud;
     Font font;
     font.loadFromFile("../txt/vcr.ttf");
@@ -92,6 +94,7 @@ int main() {
         window.clear(Color(26, 128, 182, 255));
         window.draw(bat.getShape());
         window.draw(ball.getShape());
+        window.draw(block.getShape());
         window.draw(hud);
         window.display();
     }
