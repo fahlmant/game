@@ -34,9 +34,57 @@ int main() {
                 window.close();
             }
         }
+        if(Keyboard::isKeyPressed(Keyboard::Left))
+        {
+            bat.moveLeft();
+        }
+        else if(Keyboard::isKeyPressed(Keyboard::Right))
+        {
+            bat.moveRight();
+        }
+        else if(Keyboard::isKeyPressed(Keyboard::Escape))
+        {
+            window.close();
+        }
+
+        if(ball.getPosition().top > windowHeight)
+        {
+            ball.hitBot();
+            lives --;
+            if(lives < 1)
+            {
+                score = 0;
+                lives = 3;
+            }
+        }
+
+        if(ball.getPosition().top < 0)
+        {
+            ball.reboundTopAndBat();
+            score++;
+        }
+
+        if(ball.getPosition().left < 0 || ball.getPosition().left + 10 > windowWidth)
+        {
+            ball.reboundSides();
+        }
+
+        if(ball.getPosition().intersects(bat.getPosition()))
+        {
+            ball.reboundTopAndBat();
+        }
+
+
+        ball.update();
+        bat.update();
+
+        window.clear(Color(26, 128, 182, 255));
+        window.draw(bat.getShape());
+        window.draw(ball.getShape());
+        window.draw(hud);
+        window.display();
     }
     
-
 
     return 0;
 }
