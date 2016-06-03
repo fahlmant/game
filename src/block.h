@@ -14,5 +14,6 @@ class Block {
         FloatRect getPosition();
         RectangleShape getShape();
         int getState();
+        void changeState(int new_state);
         void update();
 };

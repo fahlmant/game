@@ -24,6 +24,11 @@ int Block::getState(){
     return state;
 }
 
+void Block::changeState(int new_state){
+
+    state = new_state;
+}
+
 void Block::update(){
 
     blockShape.setPosition(position);

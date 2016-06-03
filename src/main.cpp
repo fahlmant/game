@@ -64,13 +64,13 @@ int main() {
             {
                 score = 0;
                 lives = 3;
+                block.changeState(1);
             }
         }
 
         if(ball.getPosition().top < 0)
         {
             ball.reboundTopAndBat();
-            score++;
         }
 
         if(ball.getPosition().left < 0 || ball.getPosition().left + 10 > windowWidth)
@@ -81,6 +81,12 @@ int main() {
         if(ball.getPosition().intersects(bat.getPosition()))
         {
             ball.reboundTopAndBat();
+        }
+        if(ball.getPosition().intersects(block.getPosition()))
+        {
+            ball.reboundTopAndBat();
+            score++;
+            block.changeState(0);
         }
 
 
@@ -94,7 +100,10 @@ int main() {
         window.clear(Color(26, 128, 182, 255));
         window.draw(bat.getShape());
         window.draw(ball.getShape());
-        window.draw(block.getShape());
+        if(block.getState())
+        {
+            window.draw(block.getShape());
+        }
         window.draw(hud);
         window.display();
     }
