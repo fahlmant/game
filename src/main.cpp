@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "bat.h"
 #include "ball.h"
+#include "block.h"
 #include <sstream>
 #include <SFML/Graphics.hpp>
 
@@ -18,6 +19,15 @@ int main() {
 
     Bat bat (windowWidth / 2, windowHeight - 20);
     Ball ball (windowWidth/2, 1);
+    Block block (windowWidth/2 , windowHeight/2);
+
+    /*    Block block_struct[10];
+    for(int i = 0; i < 10; i++)
+    {
+        block_struct[i] = block_struct(windowWidth/ i*2, windowHeight/i*2);
+    }
+    */
+
     Text hud;
     Font font;
     font.loadFromFile("../txt/vcr.ttf");
@@ -27,6 +37,28 @@ int main() {
 
     while(window.isOpen())
     {
+        //Menu State
+        int state = 1;
+        while(state == 1)
+        {
+            Event event;
+            std::stringstream menu;
+            menu << "         PLAY" ;
+            hud.setString(menu.str());
+            while(window.pollEvent(event))
+            {
+                if(Keyboard::isKeyPressed(Keyboard::Escape) || event.type == Event::Closed)
+                {
+                    window.close();
+                    state = 0;
+                }
+            }
+            window.clear(Color(26, 128, 182, 255));
+            window.draw(hud);
+            window.display();
+        }
+
+        //Game State
         Event e;
         while(window.pollEvent(e))
         {
@@ -37,11 +69,17 @@ int main() {
         }
         if(Keyboard::isKeyPressed(Keyboard::Left))
         {
-            bat.moveLeft();
+            if(bat.getPosition().left > 0)
+            {
+                bat.moveLeft();
+            }
         }
         else if(Keyboard::isKeyPressed(Keyboard::Right))
         {
-            bat.moveRight();
+            if(bat.getPosition().left + 50 < windowWidth)
+            {
+                bat.moveRight();
+            }
         }
         else if(Keyboard::isKeyPressed(Keyboard::Escape))
         {
@@ -56,13 +94,13 @@ int main() {
             {
                 score = 0;
                 lives = 3;
+                block.changeState(1);
             }
         }
 
         if(ball.getPosition().top < 0)
         {
             ball.reboundTopAndBat();
-            score++;
         }
 
         if(ball.getPosition().left < 0 || ball.getPosition().left + 10 > windowWidth)
@@ -73,6 +111,12 @@ int main() {
         if(ball.getPosition().intersects(bat.getPosition()))
         {
             ball.reboundTopAndBat();
+        }
+        if(ball.getPosition().intersects(block.getPosition()))
+        {
+            ball.reboundTopAndBat();
+            score++;
+            block.changeState(0);
         }
 
 
@@ -86,6 +130,10 @@ int main() {
         window.clear(Color(26, 128, 182, 255));
         window.draw(bat.getShape());
         window.draw(ball.getShape());
+        if(block.getState())
+        {
+            window.draw(block.getShape());
+        }
         window.draw(hud);
         window.display();
     }
