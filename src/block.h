@@ -7,7 +7,7 @@ class Block {
     private:
         Vector2f position;
         RectangleShape blockShape;
-        int state = 1;
+        int state;
 
     public:
         Block(float startX, float startY);

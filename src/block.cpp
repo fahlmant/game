@@ -5,6 +5,8 @@ Block::Block(float startX, float startY){
     position.x = startX;
     position.y = startY;
 
+    state = 1;
+
     blockShape.setSize(sf::Vector2f(50, 30));
     blockShape.setPosition(position);
 }
