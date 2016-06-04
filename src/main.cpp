@@ -16,6 +16,7 @@ int main() {
 
     int score = 0;
     int lives = 3;
+    int state = 0;
 
     Bat bat (windowWidth / 2, windowHeight - 20);
     Ball ball (windowWidth/2, 1);
@@ -38,8 +39,7 @@ int main() {
     while(window.isOpen())
     {
         //Menu State
-        int state = 1;
-        while(state == 1)
+        while(state == 0)
         {
             Event event;
             std::stringstream menu;
@@ -50,14 +50,20 @@ int main() {
                 if(Keyboard::isKeyPressed(Keyboard::Escape) || event.type == Event::Closed)
                 {
                     window.close();
-                    state = 0;
+                    state = 1;
+                }
+                else if(event.type = sf::Event::MouseButtonPressed)
+                {
+                    if(event.mouseButton.button == sf::Mouse::Right)
+                    {
+                        state = 1;
+                    }
                 }
             }
             window.clear(Color(26, 128, 182, 255));
             window.draw(hud);
             window.display();
         }
-
         //Game State
         Event e;
         while(window.pollEvent(e))
@@ -112,7 +118,7 @@ int main() {
         {
             ball.reboundTopAndBat();
         }
-        if(ball.getPosition().intersects(block.getPosition()))
+        if(ball.getPosition().intersects(block.getPosition()) && block.getState())
         {
             ball.reboundTopAndBat();
             score++;
