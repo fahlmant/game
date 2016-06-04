@@ -6,8 +6,8 @@ class Ball {
     private:
         Vector2f position;
         RectangleShape ballShape;
-        float xVel = .2f;
-        float yVel = .2f;
+        float xVel;
+        float yVel;
 
     public:
         Ball(float startX, float startY);
