@@ -13,7 +13,7 @@ bat.o: bat.cpp
 	g++ -c bat.cpp
 
 main.o: main.cpp
-	g++ -c main.cpp
+	g++ -c -fpermissive main.cpp
 
 clean:
 	rm -rf *.o game 
