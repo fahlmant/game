@@ -54,7 +54,7 @@ int main() {
                 }
                 else if(event.type = sf::Event::MouseButtonPressed)
                 {
-                    if(event.mouseButton.button == sf::Mouse::Right)
+                    if(event.mouseButton.button == sf::Mouse::Left)
                     {
                         state = 1;
                     }
