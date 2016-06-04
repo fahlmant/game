@@ -1,7 +1,7 @@
 language: cpp
 sudo: required
 compiler:
-  - gcc-6
+  - gcc
 
 before_script:
   - wget http://sfml-dev.org/download/sfml/2.1/SFML-2.1-linux-gcc-64bits.tar.bz2 -O /tmp/sfml.tar.bz2
@@ -10,5 +10,7 @@ before_script:
   - sudo apt-get install -y libjpeg62-dev libsndfile1-dev libglew1.5 libglew1.5-dev libfreetype6 libjpeg-turbo8 libjpeg8 libopenal-data libopenal1  libxrandr2 libxrender1 libsoil1 
   - ls
   - cd src
+  - wget http://ftp.osuosl.org/pub/ubuntu/pool/main/g/gccgo-6/gcc-6-base_6.0.1-0ubuntu1_amd64.deb
+  - sudo dpkg -i gcc-6-base_6.0.1-0ubuntu1_amd64.deb
 
 script: make
