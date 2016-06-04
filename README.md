@@ -3,7 +3,7 @@
 My own personal SFML project. Hopefully this will be a whole game at one point
 
 Master:
-https://travis-ci.com/fahlmant/game.svg?token=KqqvyXDZbxjSmFoLydsR&branch=master
+[![Build Status](https://travis-ci.com/fahlmant/game.svg?token=KqqvyXDZbxjSmFoLydsR&branch=master)](https://travis-ci.com/fahlmant/game)
 
 Breakout:
-https://travis-ci.com/fahlmant/game.svg?token=KqqvyXDZbxjSmFoLydsR&branch=breakout
+[![Build Status](https://travis-ci.com/fahlmant/game.svg?token=KqqvyXDZbxjSmFoLydsR&branch=breakout)](https://travis-ci.com/fahlmant/game)
