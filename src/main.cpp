@@ -22,7 +22,8 @@ int main() {
     Ball ball (windowWidth/2, 1);
     Block block (windowWidth/2 , windowHeight/2);
 
-    /*    Block block_struct[10];
+    /*
+    Block block_struct[10];
     for(int i = 0; i < 10; i++)
     {
         block_struct[i] = block_struct(windowWidth/ i*2, windowHeight/i*2);
