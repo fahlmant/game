@@ -1,19 +1,16 @@
 all: build
 
-build: main.o bat.o ball.o block.o
-	g++ main.o bat.o ball.o block.o -o game -lsfml-graphics -lsfml-window -lsfml-system
-
-block.o: block.cpp
-	g++ -c block.cpp
-
-ball.o: ball.cpp
-	g++ -c ball.cpp
-
-bat.o: bat.cpp
-	g++ -c bat.cpp
+build: main.o Game.o MenuState.o
+	g++ main.o Game.o MenuState.o -o generic-game -lsfml-graphics -lsfml-window -lsfml-system
 
 main.o: main.cpp
 	g++ -c -fpermissive main.cpp
+
+Game.o: Game.cpp
+	g++ -c Game.cpp
+
+MenuState.o: MenuState.cpp
+	g++ -c MenuState.cpp
 
 clean:
 	rm -rf *.o game 
